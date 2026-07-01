@@ -23,13 +23,13 @@ public class ItemModRecord extends ItemRecord implements IModelReg {
 		super("extrabotany:" + record, sound);
 		setCreativeTab(ExtraBotanyCreativeTab.INSTANCE);
 		setRegistryName(new ResourceLocation(Reference.MOD_ID, name));
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 		file = "extrabotany:music." + record;
 	}
 
 	@Override
-	public String getUnlocalizedNameInefficiently(@Nonnull ItemStack par1ItemStack) {
-		return super.getUnlocalizedNameInefficiently(par1ItemStack).replaceAll("item\\.",
+	public String getTranslationKey(@Nonnull ItemStack par1ItemStack) {
+		return super.getTranslationKey(par1ItemStack).replaceAll("item\\.",
 				"item." + Reference.MOD_ID + ":");
 	}
 

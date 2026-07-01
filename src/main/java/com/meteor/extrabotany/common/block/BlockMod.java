@@ -21,7 +21,7 @@ public class BlockMod extends Block implements IModelReg {
 
 	public BlockMod(Material par2Material, String name) {
 		super(par2Material);
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 		setRegistryName(new ResourceLocation(Reference.MOD_ID, name));
 		if(registerInCreative())
 			setCreativeTab(ExtraBotanyCreativeTab.INSTANCE);

@@ -39,7 +39,7 @@ public class ItemShieldCopy extends ItemShield implements IModelReg{
 	public ItemShieldCopy(ToolMaterial material, String name) {
 		setCreativeTab(ExtraBotanyCreativeTab.INSTANCE);
 		setRegistryName(new ResourceLocation(Reference.MOD_ID, name));
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 		this.name = name;
 		this.material = material;
 		this.setMaxDamage(material.getMaxUses() * 2);
@@ -52,8 +52,8 @@ public class ItemShieldCopy extends ItemShield implements IModelReg{
 
 	@Nonnull
 	@Override
-	public String getUnlocalizedNameInefficiently(@Nonnull ItemStack par1ItemStack) {
-		return super.getUnlocalizedNameInefficiently(par1ItemStack).replaceAll("item\\.", "item." + Reference.MOD_ID + ":");
+	public String getTranslationKey(@Nonnull ItemStack par1ItemStack) {
+		return super.getTranslationKey(par1ItemStack).replaceAll("item\\.", "item." + Reference.MOD_ID + ":");
 	}
 
 	@SideOnly(Side.CLIENT)

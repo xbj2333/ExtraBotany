@@ -3,6 +3,7 @@ package com.meteor.extrabotany.common.item.equipment.bauble;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.meteor.extrabotany.common.brew.ModPotions;
+import com.meteor.extrabotany.common.brew.potion.PotionEternity;
 import com.meteor.extrabotany.common.lib.LibItemsName;
 
 import baubles.api.BaubleType;
@@ -13,7 +14,6 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.MinecraftForge;
@@ -53,7 +53,7 @@ public class ItemSilentEternity extends ItemBaubleRelic implements IManaItem{
 			return;
 		EntityPlayer player = (EntityPlayer) entity;
 		addMana(stack, 666);
-		if(!entity.world.isRemote) {
+		if(!entity.world.isRemote && !player.isDead && player.getHealth() > 1.0f) {
 			boolean lastOnGround = entity.onGround;
 			entity.onGround = true;
 			EnchantmentFrostWalker.freezeNearby(entity, entity.world, new BlockPos(entity), 4);
@@ -63,7 +63,7 @@ public class ItemSilentEternity extends ItemBaubleRelic implements IManaItem{
 				setStopticks(stack, getStopticks(stack)+1);
 				if(getStopticks(stack) > 15) {
 					player.setHealth(Math.min(player.getMaxHealth(), player.getHealth()+0.4F));
-					player.addPotionEffect(new PotionEffect(ModPotions.eternity, 10));
+					PotionEternity.addAuthorizedEffect(player, 20, 0);
 				}
 			}else
 				setStopticks(stack, 0);

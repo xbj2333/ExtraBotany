@@ -66,7 +66,7 @@ public class ItemFirstFractal extends ItemSword implements IRelic, IModelReg, IM
 		super(toolMaterial);
 		setCreativeTab(ExtraBotanyCreativeTab.INSTANCE);
 		setRegistryName(new ResourceLocation(Reference.MOD_ID, name));
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
@@ -237,7 +237,7 @@ public class ItemFirstFractal extends ItemSword implements IRelic, IModelReg, IM
 	@Override
 	public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack) {
 		Multimap<String, AttributeModifier> attrib = super.getAttributeModifiers(slot, stack);
-		UUID uuid = new UUID((getUnlocalizedName() + slot.toString()).hashCode(), 0);
+		UUID uuid = new UUID((getTranslationKey() + slot.toString()).hashCode(), 0);
 		if (slot == slot.MAINHAND) {
 			attrib.put(SharedMonsterAttributes.MOVEMENT_SPEED.getName(),
 					new AttributeModifier(uuid, "Weapon modifier", 0.3, 1));
@@ -251,8 +251,8 @@ public class ItemFirstFractal extends ItemSword implements IRelic, IModelReg, IM
 	
 	@Nonnull
 	@Override
-	public String getUnlocalizedNameInefficiently(@Nonnull ItemStack par1ItemStack) {
-		return super.getUnlocalizedNameInefficiently(par1ItemStack).replaceAll("item\\.",
+	public String getTranslationKey(@Nonnull ItemStack par1ItemStack) {
+		return super.getTranslationKey(par1ItemStack).replaceAll("item\\.",
 				"item." + Reference.MOD_ID + ":");
 	}
 

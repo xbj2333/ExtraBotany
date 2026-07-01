@@ -40,7 +40,7 @@ public class ItemBottledFlame extends ItemBauble{
 					return;
 				for(int i = 0; i < player.inventory.getSizeInventory(); i++) {
 					ItemStack stackAt = player.inventory.getStackInSlot(i);
-					if(!stackAt.isEmpty() && TORCH_PATTERN.matcher(stackAt.getItem().getUnlocalizedName()).find()) {
+					if(!stackAt.isEmpty() && TORCH_PATTERN.matcher(stackAt.getItem().getTranslationKey()).find()) {
 						ItemStack saveHeldStack = player.getHeldItem(EnumHand.OFF_HAND);
 						player.setHeldItem(EnumHand.OFF_HAND, stackAt);
 						stackAt.getItem().onItemUse(player, world, pos, EnumHand.OFF_HAND, EnumFacing.DOWN, 0F,0F,0F);

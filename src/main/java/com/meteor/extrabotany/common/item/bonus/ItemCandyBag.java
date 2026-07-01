@@ -24,8 +24,8 @@ public class ItemCandyBag extends ItemBonusBase {
 	@Nonnull
 	@Override
 	@SideOnly(Side.CLIENT)
-	public String getUnlocalizedName(ItemStack stack) {
-		String name = super.getUnlocalizedName(stack);
+	public String getTranslationKey(ItemStack stack) {
+		String name = super.getTranslationKey(stack);
 		if (ClientProxy.christmas)
 			name = name.replaceAll("candybag", "candybagchris");
 		return name;

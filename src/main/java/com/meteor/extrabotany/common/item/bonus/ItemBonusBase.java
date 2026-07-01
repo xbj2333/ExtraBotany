@@ -21,6 +21,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -70,8 +71,7 @@ public class ItemBonusBase extends ItemMod {
 			addStringToTooltip(I18n.format("extrabotany.bonusbase"), stacks);
 			for (WeightCategory wc : getWeightCategory(par1ItemStack)) {
 				String num = df.format((float) wc.getWeight() / getSum(par1ItemStack));
-				String name = I18n
-						.format(wc.getCategory().getItem().getUnlocalizedNameInefficiently(wc.getCategory()) + ".name");
+				String name = getLocalizedStackName(wc.getCategory());
 				TextFormatting text = (float) wc.getWeight() / getSum(par1ItemStack) < 0.01F ? TextFormatting.GOLD
 						: TextFormatting.RESET;
 				addStringToTooltip(text + name + " x" + wc.getCategory().getCount() + " " + num, stacks);
@@ -82,6 +82,23 @@ public class ItemBonusBase extends ItemMod {
 
 	void addStringToTooltip(String s, List<String> tooltip) {
 		tooltip.add(s.replaceAll("&", "\u00a7"));
+	}
+
+	private String getLocalizedStackName(ItemStack stack) {
+		ResourceLocation registryName = stack.getItem().getRegistryName();
+		if (registryName != null && "botania".equals(registryName.getNamespace()) && "petal".equals(registryName.getPath())) {
+			String key = "item.botania:petal" + stack.getMetadata() + ".name";
+			if (I18n.hasKey(key)) {
+				return I18n.format(key);
+			}
+		}
+
+		String name = stack.getDisplayName();
+		String fallbackKey = stack.getItem().getTranslationKey(stack) + ".name";
+		if (name.equals(fallbackKey) && I18n.hasKey(fallbackKey)) {
+			return I18n.format(fallbackKey);
+		}
+		return name;
 	}
 
 	@Override

@@ -41,7 +41,7 @@ public class BlockTrophy extends BlockMod{
 	@SideOnly(Side.CLIENT)
 	@Nonnull
 	@Override
-	public BlockRenderLayer getBlockLayer() {
+	public BlockRenderLayer getRenderLayer() {
 		return BlockRenderLayer.CUTOUT;
 	}
 	
@@ -73,7 +73,7 @@ public class BlockTrophy extends BlockMod{
 	
 	@Override
 	public IBlockState getStateFromMeta(int meta){
-	        return this.getDefaultState().withProperty(FACING, EnumFacing.getFront(meta & 7));
+	        return this.getDefaultState().withProperty(FACING, EnumFacing.byIndex(meta & 7));
 	}
 	
 	@Override

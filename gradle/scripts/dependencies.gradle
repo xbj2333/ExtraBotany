@@ -1,0 +1,75 @@
+apply from: 'gradle/scripts/helpers.gradle'
+
+repositories {
+    exclusiveContent {
+        forRepository {
+            maven {
+                name 'CurseMaven'
+                url 'https://www.cursemaven.com'
+            }
+        }
+        filter {
+            includeGroup 'curse.maven'
+        }
+    }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name 'Modrinth'
+                url 'https://api.modrinth.com/maven'
+            }
+        }
+        filter {
+            includeGroup 'maven.modrinth'
+        }
+    }
+    maven {
+        name 'JitPack'
+        url 'https://jitpack.io'
+    }
+    flatDir {
+        dirs 'libs'
+    }
+    mavenLocal()
+}
+
+configurations {
+    shade
+    implementation.extendsFrom shade
+}
+
+dependencies {
+    runtimeOnly 'com.cleanroommc:strip-latest-forge-requirements:1.0'
+    runtimeOnly 'com.cleanroommc:osxnarratorblocker:1.0'
+
+    api rfg.deobf('curse.maven:botania-225643:3330934')
+    api rfg.deobf('curse.maven:jei-238222:3040523')
+    api rfg.deobf('curse.maven:hwyla-253449:2568751')
+    api rfg.deobf('curse.maven:the-one-probe-245211:2667280')
+
+    api 'curse.maven:crafttweaker-239197:8051578'
+    api rfg.deobf('curse.maven:mtlib-253211:3308160')
+
+    api rfg.deobf('curse.maven:baubles-227083:2518667')
+    api rfg.deobf('curse.maven:thaumcraft-223628:2629023')
+    api rfg.deobf('curse.maven:redstone-flux-270789:2920436')
+    api(rfg.deobf('com.github.gamerforEA:EventHelper:1.12.2-2.6.2')) {
+        transitive = false
+    }
+
+    api rfg.deobf('curse.maven:mantle-74924:2713386')
+    api rfg.deobf('curse.maven:tinkers-construct-74072:2902483')
+    api rfg.deobf('curse.maven:constructs-armory-287683:3174535')
+}
+
+if (!configurations.shade.dependencies.empty) {
+    tasks.named('reobfJar').configure {
+        inputJar.set(tasks.named('shadowJar').flatMap({ it.archiveFile }))
+    }
+}
+
+tasks.shadowJar {
+    enabled = !project.configurations.shade.dependencies.empty
+    archiveClassifier = 'uberdev'
+    configurations = [ project.configurations.shade ]
+}

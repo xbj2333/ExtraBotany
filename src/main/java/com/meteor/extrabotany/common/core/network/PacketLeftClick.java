@@ -20,7 +20,7 @@ public class PacketLeftClick extends AbstractPacketThreadsafe {
 	@Override
 	public void handleServerSafe(NetHandlerPlayServer netHandler) {
 		EntityPlayerMP player = netHandler.player;
-		player.mcServer.addScheduledTask(() -> ((ItemExcaliber) ModItems.excaliber).trySpawnBurst(player));
+		player.server.addScheduledTask(() -> ((ItemExcaliber) ModItems.excaliber).trySpawnBurst(player));
 	}
 
 	@Override

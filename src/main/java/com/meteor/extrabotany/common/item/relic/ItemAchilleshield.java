@@ -83,7 +83,7 @@ public class ItemAchilleshield extends ItemManasteelShield implements IRelic, IP
 	@Override
 	public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack) {
 		Multimap<String, AttributeModifier> attrib = super.getAttributeModifiers(slot, stack);
-		UUID uuid = new UUID((getUnlocalizedName() + slot.toString()).hashCode(), 0);
+		UUID uuid = new UUID((getTranslationKey() + slot.toString()).hashCode(), 0);
 		if (slot == slot.MAINHAND) {
 			attrib.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(),
 					new AttributeModifier(uuid, "Weapon modifier", isReleased(stack) ? 15 : 6, 0));

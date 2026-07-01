@@ -54,7 +54,7 @@ public class ItemDaedalusStormbow extends ItemBow implements IManaUsingItem, IRe
 		super();
 		setCreativeTab(ExtraBotanyCreativeTab.INSTANCE);
 		setRegistryName(new ResourceLocation(Reference.MOD_ID, LibItemsName.DAEDALUSSTORMBOW));
-		setUnlocalizedName(LibItemsName.DAEDALUSSTORMBOW);
+		setTranslationKey(LibItemsName.DAEDALUSSTORMBOW);
 	}
 
 	@Override
@@ -223,8 +223,8 @@ public class ItemDaedalusStormbow extends ItemBow implements IManaUsingItem, IRe
 
 	@Nonnull
 	@Override
-	public String getUnlocalizedNameInefficiently(@Nonnull ItemStack par1ItemStack) {
-		return super.getUnlocalizedNameInefficiently(par1ItemStack).replaceAll("item\\.",
+	public String getTranslationKey(@Nonnull ItemStack par1ItemStack) {
+		return super.getTranslationKey(par1ItemStack).replaceAll("item\\.",
 				"item." + Reference.MOD_ID + ":");
 	}
 

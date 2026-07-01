@@ -16,11 +16,11 @@ public class ItemBlockMod extends ItemBlock {
 
 	@Nonnull
 	@Override
-	public String getUnlocalizedNameInefficiently(@Nonnull ItemStack par1ItemStack) {
+	public String getTranslationKey(@Nonnull ItemStack par1ItemStack) {
 		return getUnlocalizedNameInefficiently_(par1ItemStack).replaceAll("tile.", "tile." + Reference.MOD_ID + ":");
 	}
 
 	public String getUnlocalizedNameInefficiently_(ItemStack stack) {
-		return super.getUnlocalizedNameInefficiently(stack);
+		return super.getTranslationKey(stack);
 	}
 }

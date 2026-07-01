@@ -17,7 +17,7 @@ public class PacketLeftClickFractal extends AbstractPacketThreadsafe {
 	@Override
 	public void handleServerSafe(NetHandlerPlayServer netHandler) {
 		EntityPlayerMP player = netHandler.player;
-		player.mcServer.addScheduledTask(() -> ((ItemFirstFractal) ModItems.firstfractal).trySpawnPhantomSword(player, null));
+		player.server.addScheduledTask(() -> ((ItemFirstFractal) ModItems.firstfractal).trySpawnPhantomSword(player, null));
 	}
 
 	@Override

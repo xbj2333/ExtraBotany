@@ -17,7 +17,7 @@ public class PacketLeftClickJingwei extends AbstractPacketThreadsafe {
 	@Override
 	public void handleServerSafe(NetHandlerPlayServer netHandler) {
 		EntityPlayerMP player = netHandler.player;
-		player.mcServer.addScheduledTask(() -> ((ItemJingweiFeather) ModItems.jingweifeather).trySpawnFireball(player));
+		player.server.addScheduledTask(() -> ((ItemJingweiFeather) ModItems.jingweifeather).trySpawnFireball(player));
 	}
 
 	@Override

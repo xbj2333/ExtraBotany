@@ -8,7 +8,7 @@ public interface IAdvancementRequired {
 	@Deprecated
 	default String getAdvancementName(ItemStack stack) {
 		return getRequiredAdvancementId(stack)
-			.getResourcePath()
+			.getPath()
 			.substring(LibAdvancements.PREFIX.length());
 	}
 

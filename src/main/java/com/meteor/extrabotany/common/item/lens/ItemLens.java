@@ -8,6 +8,7 @@ import javax.annotation.Nonnull;
 import com.meteor.extrabotany.client.core.handler.ModelHandler;
 import com.meteor.extrabotany.common.item.ItemMod;
 import com.meteor.extrabotany.common.lib.LibItemsName;
+import com.meteor.extrabotany.common.lib.Reference;
 
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -90,8 +91,8 @@ public class ItemLens extends ItemMod implements ILensControl, ICompositableLens
 
 	@Nonnull
 	@Override
-	public String getUnlocalizedName(ItemStack stack) {
-		return "item." + LibItemsName.LENSES[Math.min(SUBTYPES - 1, stack.getItemDamage())];
+	public String getTranslationKey(ItemStack stack) {
+		return "item." + Reference.MOD_ID + ":" + LibItemsName.LENSES[Math.min(SUBTYPES - 1, stack.getItemDamage())];
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -113,7 +114,12 @@ public class ItemLens extends ItemMod implements ILensControl, ICompositableLens
 	}
 
 	private String getItemShortTermName(ItemStack stack) {
-		return I18n.format(stack.getUnlocalizedName().replaceAll("item.", "item.botania:") + ".short");
+		if (stack.getItem() == this) {
+			String key = "item.botania:" + LibItemsName.LENSES[Math.min(SUBTYPES - 1, stack.getItemDamage())] + ".short";
+			return I18n.hasKey(key) ? I18n.format(key) : stack.getDisplayName();
+		}
+		String key = stack.getTranslationKey() + ".short";
+		return I18n.hasKey(key) ? I18n.format(key) : stack.getDisplayName();
 	}
 
 	@Nonnull

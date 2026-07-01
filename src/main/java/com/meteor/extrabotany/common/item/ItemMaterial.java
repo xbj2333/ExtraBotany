@@ -48,8 +48,9 @@ public class ItemMaterial extends ItemMod implements IFlowerComponent {
 
 	@Nonnull
 	@Override
-	public String getUnlocalizedName(ItemStack par1ItemStack) {
-		return "item." + LibItemsName.MANA_RESOURCE_NAMES[Math.min(types - 1, par1ItemStack.getItemDamage())];
+	public String getTranslationKey(ItemStack par1ItemStack) {
+		return "item." + Reference.MOD_ID + ":"
+				+ LibItemsName.MANA_RESOURCE_NAMES[Math.min(types - 1, par1ItemStack.getItemDamage())];
 	}
 
 	@Override

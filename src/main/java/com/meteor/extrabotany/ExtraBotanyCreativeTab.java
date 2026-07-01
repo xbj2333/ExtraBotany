@@ -24,7 +24,7 @@ public class ExtraBotanyCreativeTab extends CreativeTabs {
 	}
 
 	@Override
-	public ItemStack getTabIconItem() {
+	public ItemStack createIcon() {
 		return new ItemStack(ModItems.kinggarden);
 	}
 

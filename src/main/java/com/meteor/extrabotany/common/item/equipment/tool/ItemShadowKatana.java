@@ -41,7 +41,7 @@ public class ItemShadowKatana extends ItemSword implements IModelReg, IManaUsing
 		super(BotaniaAPI.elementiumToolMaterial);
 		setCreativeTab(ExtraBotanyCreativeTab.INSTANCE);
 		setRegistryName(new ResourceLocation(Reference.MOD_ID, LibItemsName.SHADOWKATANA));
-		setUnlocalizedName(LibItemsName.SHADOWKATANA);
+		setTranslationKey(LibItemsName.SHADOWKATANA);
 	}
 	
 	@Override
@@ -87,7 +87,7 @@ public class ItemShadowKatana extends ItemSword implements IModelReg, IManaUsing
 	@Override
 	public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack) {
 		Multimap<String, AttributeModifier> attrib = super.getAttributeModifiers(slot, stack);
-		UUID uuid = new UUID((getUnlocalizedName() + slot.toString()).hashCode(), 0);
+		UUID uuid = new UUID((getTranslationKey() + slot.toString()).hashCode(), 0);
 		boolean night = ItemNBTHelper.getBoolean(stack, "isnight", false);
 		if (slot == EntityEquipmentSlot.MAINHAND) {
 			attrib.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(uuid, "ShadowKatana modifier", night ? 10 : 0, 0));
@@ -98,8 +98,8 @@ public class ItemShadowKatana extends ItemSword implements IModelReg, IManaUsing
 	
 	@Nonnull
 	@Override
-	public String getUnlocalizedNameInefficiently(@Nonnull ItemStack par1ItemStack) {
-		return super.getUnlocalizedNameInefficiently(par1ItemStack).replaceAll("item\\.", "item." + Reference.MOD_ID + ":");
+	public String getTranslationKey(@Nonnull ItemStack par1ItemStack) {
+		return super.getTranslationKey(par1ItemStack).replaceAll("item\\.", "item." + Reference.MOD_ID + ":");
 	}
 
 	@SideOnly(Side.CLIENT)

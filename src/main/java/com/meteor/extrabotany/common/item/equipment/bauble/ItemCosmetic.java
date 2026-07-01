@@ -156,8 +156,9 @@ public class ItemCosmetic extends ItemBauble implements ICosmeticBauble{
 	
 	@Nonnull
 	@Override
-	public String getUnlocalizedName(ItemStack par1ItemStack) {
-		return "item." + LibItemsName.COSMETIC_NAMES[Math.min(types - 1, par1ItemStack.getItemDamage())];
+	public String getTranslationKey(ItemStack par1ItemStack) {
+		return "item." + Reference.MOD_ID + ":"
+				+ LibItemsName.COSMETIC_NAMES[Math.min(types - 1, par1ItemStack.getItemDamage())];
 	}
 	
 	@SideOnly(Side.CLIENT)

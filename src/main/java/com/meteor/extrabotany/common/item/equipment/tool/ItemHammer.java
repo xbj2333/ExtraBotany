@@ -34,7 +34,7 @@ public class ItemHammer extends ItemPickaxe implements IModelReg, IHammer, IMana
 		super(material);
 		setCreativeTab(ExtraBotanyCreativeTab.INSTANCE);
 		setRegistryName(new ResourceLocation(Reference.MOD_ID, name));
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
@@ -47,8 +47,8 @@ public class ItemHammer extends ItemPickaxe implements IModelReg, IHammer, IMana
 
 	@Nonnull
 	@Override
-	public String getUnlocalizedNameInefficiently(@Nonnull ItemStack par1ItemStack) {
-		return super.getUnlocalizedNameInefficiently(par1ItemStack).replaceAll("item\\.", "item." + Reference.MOD_ID + ":");
+	public String getTranslationKey(@Nonnull ItemStack par1ItemStack) {
+		return super.getTranslationKey(par1ItemStack).replaceAll("item\\.", "item." + Reference.MOD_ID + ":");
 	}
 	
 	public void onUpdate(ItemStack stack, World world, Entity player, int par4, boolean par5) {

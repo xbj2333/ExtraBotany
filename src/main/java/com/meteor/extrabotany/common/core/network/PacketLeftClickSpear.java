@@ -17,7 +17,7 @@ public class PacketLeftClickSpear extends AbstractPacketThreadsafe {
 	@Override
 	public void handleServerSafe(NetHandlerPlayServer netHandler) {
 		EntityPlayerMP player = netHandler.player;
-		player.mcServer.addScheduledTask(() -> ((ItemSpearSubspace) ModItems.spearsubspace).trySpawnSpear(player));
+		player.server.addScheduledTask(() -> ((ItemSpearSubspace) ModItems.spearsubspace).trySpawnSpear(player));
 	}
 
 	@Override

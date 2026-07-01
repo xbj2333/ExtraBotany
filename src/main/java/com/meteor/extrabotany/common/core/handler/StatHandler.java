@@ -35,7 +35,7 @@ public class StatHandler {
 
 		ResourceLocation id = advancement.getId();
 
-		if (!Reference.MOD_ID.equals(id.getResourceDomain())) {
+		if (!Reference.MOD_ID.equals(id.getNamespace())) {
 			return;
 		}
 
@@ -72,7 +72,7 @@ public class StatHandler {
 
 		ResourceLocation id = advancement.getId();
 
-		if (!Reference.MOD_ID.equals(id.getResourceDomain())) {
+		if (!Reference.MOD_ID.equals(id.getNamespace())) {
 			return;
 		}
 

@@ -42,8 +42,9 @@ public class ItemFlyingBoat extends ItemMod {
 
 	@Nonnull
 	@Override
-	public String getUnlocalizedName(ItemStack par1ItemStack) {
-		return "item." + LibItemsName.FLYING_BOAT_NAMES[Math.min(types - 1, par1ItemStack.getItemDamage())];
+	public String getTranslationKey(ItemStack par1ItemStack) {
+		return "item." + Reference.MOD_ID + ":"
+				+ LibItemsName.FLYING_BOAT_NAMES[Math.min(types - 1, par1ItemStack.getItemDamage())];
 	}
 
 	@Override
@@ -79,7 +80,7 @@ public class ItemFlyingBoat extends ItemMod {
 		float f7 = f4 * f5;
 		float f8 = f3 * f5;
 		double d3 = 5.0D;
-		Vec3d vec3d1 = vec3d.addVector((double) f7 * 5.0D, (double) f6 * 5.0D, (double) f8 * 5.0D);
+		Vec3d vec3d1 = vec3d.add((double) f7 * 5.0D, (double) f6 * 5.0D, (double) f8 * 5.0D);
 		RayTraceResult raytraceresult = worldIn.rayTraceBlocks(vec3d, vec3d1, true);
 
 		if (raytraceresult == null) {

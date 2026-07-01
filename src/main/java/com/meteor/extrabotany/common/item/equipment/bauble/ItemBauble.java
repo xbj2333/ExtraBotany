@@ -62,7 +62,7 @@ public abstract class ItemBauble extends ItemMod implements IBauble, ICosmeticAt
 			IItemHandler inv = BaublesApi.getBaublesHandler((EntityPlayer) evt.getEntityLiving());
 			for(int i = 0; i < inv.getSlots(); i++) {
 				ItemStack stack = inv.getStackInSlot(i);
-				if (!stack.isEmpty() && stack.getItem().getRegistryName().getResourceDomain().equals(Reference.MOD_ID)) {
+				if (!stack.isEmpty() && stack.getItem().getRegistryName().getNamespace().equals(Reference.MOD_ID)) {
 					((ItemBauble) stack.getItem()).onUnequipped(stack, evt.getEntityLiving());
 				}
 			}

@@ -244,9 +244,9 @@ public class ItemHammerUltimate extends ItemHammer implements IManaItem, ISequen
 
 		int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, stack);
 		boolean silk = EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, stack) > 0;
-		boolean doX = side.getFrontOffsetX() == 0;
-		boolean doY = side.getFrontOffsetY() == 0;
-		boolean doZ = side.getFrontOffsetZ() == 0;
+		boolean doX = side.getXOffset() == 0;
+		boolean doY = side.getYOffset() == 0;
+		boolean doZ = side.getZOffset() == 0;
 
 		int level = 2;
 		int range = level - 1;

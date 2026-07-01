@@ -17,7 +17,7 @@ public class PacketLeftClickCopy extends AbstractPacketThreadsafe {
 	@Override
 	public void handleServerSafe(NetHandlerPlayServer netHandler) {
 		EntityPlayerMP player = netHandler.player;
-		player.mcServer.addScheduledTask(() -> ((ItemBuddhistRelics) ModItems.relics).trySpawnBurst(player));
+		player.server.addScheduledTask(() -> ((ItemBuddhistRelics) ModItems.relics).trySpawnBurst(player));
 	}
 
 	@Override

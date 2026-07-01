@@ -123,7 +123,7 @@ public class ItemBrewBase extends ItemMod implements IBrewItem {
 	public String getItemStackDisplayName(@Nonnull ItemStack stack) {
 		return String.format(
 				net.minecraft.util.text.translation.I18n
-						.translateToLocal(getUnlocalizedNameInefficiently(stack) + ".name"),
+						.translateToLocal(getTranslationKey(stack) + ".name"),
 				net.minecraft.util.text.translation.I18n.translateToLocal(getBrew(stack).getUnlocalizedName(stack)),
 				"" + getSwigsLeft(stack));
 	}

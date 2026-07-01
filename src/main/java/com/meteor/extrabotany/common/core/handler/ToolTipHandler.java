@@ -20,9 +20,9 @@ public class ToolTipHandler {
 				e.getToolTip().add("Mana:" + manaitem.getMana(e.getItemStack()) + "/" + manaitem.getMaxMana(e.getItemStack()));
 			}
 		}
-		if(item.getUnlocalizedNameInefficiently(e.getItemStack()).indexOf(LibBlocksName.TILE_MANAGENERATOR) != -1 && !ConfigHandler.DISABLE_MANAGENERATOR)
+		if(item.getTranslationKey(e.getItemStack()).indexOf(LibBlocksName.TILE_MANAGENERATOR) != -1 && !ConfigHandler.DISABLE_MANAGENERATOR)
 			e.getToolTip().add(I18n.format("extrabotanymisc.disabledblock"));
-		else if(item.getUnlocalizedNameInefficiently(e.getItemStack()).indexOf(LibBlocksName.TILE_MANALIQUEFYING) != -1 && !ConfigHandler.DISABLE_MANALIQUEFICATION)
+		else if(item.getTranslationKey(e.getItemStack()).indexOf(LibBlocksName.TILE_MANALIQUEFYING) != -1 && !ConfigHandler.DISABLE_MANALIQUEFICATION)
 			e.getToolTip().add(I18n.format("extrabotanymisc.disabledblock"));	
 	}
 

@@ -6,6 +6,7 @@ import javax.annotation.Nonnull;
 
 import com.google.common.collect.Multimap;
 import com.meteor.extrabotany.common.brew.ModPotions;
+import com.meteor.extrabotany.common.brew.potion.PotionEternity;
 import com.meteor.extrabotany.common.core.handler.ModSounds;
 import com.meteor.extrabotany.common.core.network.ExtraBotanyNetwork;
 import com.meteor.extrabotany.common.core.network.PacketLeftClickSpear;
@@ -20,7 +21,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
@@ -45,7 +45,7 @@ public class ItemSpearSubspace extends ItemModRelic implements IManaUsingItem {
 	@Override
 	public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack) {
 		Multimap<String, AttributeModifier> attrib = super.getAttributeModifiers(slot, stack);
-		UUID uuid = new UUID((getUnlocalizedName() + slot.toString()).hashCode(), 0);
+		UUID uuid = new UUID((getTranslationKey() + slot.toString()).hashCode(), 0);
 		if (slot == EntityEquipmentSlot.MAINHAND) {
 			attrib.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(),
 					new AttributeModifier(uuid, "spear modifier ", 8F, 0));
@@ -159,7 +159,7 @@ public class ItemSpearSubspace extends ItemModRelic implements IManaUsingItem {
 						sub.playSound(ModSounds.spearsubspace, 1.6F, 1F);
 
 				}
-			player.addPotionEffect(new PotionEffect(ModPotions.eternity, 120, 0));
+			PotionEternity.addAuthorizedEffect((EntityPlayer) player, 120, 0);
 		}
 
 		super.onPlayerStoppedUsing(stack, world, player, timeLeft);

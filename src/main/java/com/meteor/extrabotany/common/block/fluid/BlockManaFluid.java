@@ -23,7 +23,7 @@ public class BlockManaFluid extends BlockFluidClassic implements IModelReg{
         super(ModFluid.fluidMana, Material.WATER);
         setRegistryName(new ResourceLocation(Reference.MOD_ID, "fluidedmana"));
         setCreativeTab(ExtraBotanyCreativeTab.INSTANCE);
-        setUnlocalizedName("fluidedmana");
+        setTranslationKey("fluidedmana");
     }
 	
 	@SideOnly(Side.CLIENT)

@@ -85,7 +85,7 @@ public class ClientProxy extends CommonProxy{
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 		super.preInit(event);
-		PersistentVariableHandler.setCacheFile(new File(Minecraft.getMinecraft().mcDataDir, "ExtraBotanyVars.dat"));
+		PersistentVariableHandler.setCacheFile(new File(Minecraft.getMinecraft().gameDir, "ExtraBotanyVars.dat"));
 		Minecraft.getMinecraft().addScheduledTask(()->this.loadAndSave());
 		//loadAndSave();
 		MinecraftForge.EVENT_BUS.register(MiscellaneousIcons.INSTANCE);

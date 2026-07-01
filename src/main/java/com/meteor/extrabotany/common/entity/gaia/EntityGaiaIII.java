@@ -167,8 +167,6 @@ public class EntityGaiaIII extends EntityLiving implements IBotaniaBoss, IEntity
 		if (this.ticksExisted < 60)
 			return;
 
-		punish();
-
 		for (EntityPlayer player : getPlayersAround()) {
 			this.faceEntity(player, 360F, 360F);
 			break;
@@ -278,11 +276,6 @@ public class EntityGaiaIII extends EntityLiving implements IBotaniaBoss, IEntity
 				landmine.summoner = this;
 				world.spawnEntity(landmine);
 			}
-
-		if (ConfigHandler.GAIA_DISARM)
-			for (EntityPlayer player : getPlayersAround())
-				if (!player.isCreative())
-					disarm(player);
 
 		if (cd > 0 && getRankII())
 			cd--;
@@ -502,14 +495,6 @@ public class EntityGaiaIII extends EntityLiving implements IBotaniaBoss, IEntity
 						.setStyle(new Style().setColor(TextFormatting.RED)));
 			}
 
-			return false;
-		}
-
-		// check inventory
-		if (!check(player)) {
-			if (world.isRemote)
-				player.sendMessage(new TextComponentTranslation("botaniamisc.illegalInventory")
-						.setStyle(new Style().setColor(TextFormatting.RED)));
 			return false;
 		}
 

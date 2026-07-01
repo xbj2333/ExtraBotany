@@ -68,11 +68,11 @@ public class ItemHalloweenCandy extends ItemFoodMod {
 	@Nonnull
 	@Override
 	@SideOnly(Side.CLIENT)
-	public String getUnlocalizedName(ItemStack stack) {
+	public String getTranslationKey(ItemStack stack) {
 		String name = LibItemsName.CANDY;
 		if (ClientProxy.christmas)
 			name = LibItemsName.CANDY + "chris";
-		return "item." + name + stack.getMetadata();
+		return "item." + Reference.MOD_ID + ":" + name + stack.getMetadata();
 	}
 
 	@Override

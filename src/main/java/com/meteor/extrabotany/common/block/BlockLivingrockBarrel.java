@@ -41,7 +41,7 @@ public class BlockLivingrockBarrel extends BlockMod implements ILexiconable{
 	@SideOnly(Side.CLIENT)
 	@Nonnull
 	@Override
-	public BlockRenderLayer getBlockLayer() {
+	public BlockRenderLayer getRenderLayer() {
 		return BlockRenderLayer.CUTOUT;
 	}
 	

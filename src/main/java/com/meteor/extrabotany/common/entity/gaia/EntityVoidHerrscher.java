@@ -184,7 +184,6 @@ public class EntityVoidHerrscher extends EntityCreature
 			if (vec3d != null)
 				this.getNavigator().tryMoveToXYZ(vec3d.x, vec3d.y, vec3d.z, 1.2F);
 		}
-		punish();
 		if (this.ticksExisted > 3600)
 			this.quickkill = false;
 
@@ -358,11 +357,6 @@ public class EntityVoidHerrscher extends EntityCreature
 			}
 
 		for (EntityPlayer player : getPlayersAround()) {
-			if (!player.isCreative()) {
-				if (ConfigHandler.GAIA_DISARM)
-					disarm(player);
-
-			}
 			if (player.motionY > 0)
 				player.motionY = -player.motionY;
 		}
@@ -673,14 +667,6 @@ public class EntityVoidHerrscher extends EntityCreature
 						.setStyle(new Style().setColor(TextFormatting.RED)));
 			}
 
-			return false;
-		}
-
-		// check inventory
-		if (!check(player)) {
-			if (world.isRemote)
-				player.sendMessage(new TextComponentTranslation("botaniamisc.illegalInventory")
-						.setStyle(new Style().setColor(TextFormatting.RED)));
 			return false;
 		}
 

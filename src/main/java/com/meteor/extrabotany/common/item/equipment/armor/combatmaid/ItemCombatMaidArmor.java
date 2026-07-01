@@ -29,7 +29,7 @@ public class ItemCombatMaidArmor extends ItemCosmeticMaidArmor {
 	@Override
 	public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack) {
 		Multimap<String, AttributeModifier> attrib = super.getAttributeModifiers(slot, stack);
-		UUID uuid = new UUID((getUnlocalizedName() + slot.toString()).hashCode(), 0);
+		UUID uuid = new UUID((getTranslationKey() + slot.toString()).hashCode(), 0);
 		boolean night = ItemNBTHelper.getBoolean(stack, "isnight", false);
 		if (slot == armorType) {
 			attrib.put(SharedMonsterAttributes.KNOCKBACK_RESISTANCE.getName(),
